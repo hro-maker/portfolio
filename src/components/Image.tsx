@@ -1,3 +1,4 @@
+import { Tooltip } from '@mui/material';
 import  { FC, useEffect, useState } from 'react'
 import { ImageModal } from './Imagemodal';
 interface IProps {
@@ -17,15 +18,9 @@ function enableScrolling(){
 export const Image: FC<IProps> = ({ url, alt, className, stopAnimation, ...props }) => {
     const [shouModal, setShowModal] = useState<boolean>(false)
     useEffect(()=>{
-        function Scrollfunc(e:any){
-           if(shouModal){
-            e.preventDefault()
-            console.log("pr")
-           }
-        }
-        document.addEventListener('scroll',Scrollfunc)
+        enableScrolling()
         return ()=>{
-            document.removeEventListener('scroll',Scrollfunc)
+            disableScrolling()
         }
     },[])
     return (
@@ -34,12 +29,15 @@ export const Image: FC<IProps> = ({ url, alt, className, stopAnimation, ...props
                 setShowModal(b)
                 stopAnimation(true)
             }} />
+            <Tooltip placement="top" title="Click for zoom">
             <img
                 style={{cursor:'pointer'}}
                 onClick={() => {
                     stopAnimation(false)
                     setShowModal(true)
                 }} className={className} {...props} alt={alt} src={url} />
+            </Tooltip>
+            
         </>
     )
 }

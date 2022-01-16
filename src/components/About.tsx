@@ -4,9 +4,12 @@ import second from '../assets/h.jpg'
 import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsFillHeartFill } from "react-icons/bs";
 import { AiOutlineHeart } from 'react-icons/ai';
 import { Image } from './Image';
+import { useTranslation } from 'react-i18next';
+
 interface IProps { }
 
 export const About: FC<IProps> = (props) => {
+  const {t} = useTranslation ();
   const [slideCounter, setSlideCounter] = useState<number>(1)
   const [isInterval, setIsInterval] = useState(true)
 
@@ -57,11 +60,11 @@ export const About: FC<IProps> = (props) => {
           <div className="slider__left">
             <div>
               <div className="slider__title">
-                Hello <br />
-                <span className="slider-span">I'm </span>Hrant Muradyan
+                {t("hello")} <br />
+                <span className="slider-span">{t('i')} </span>{t('name')}
               </div>
               <div className="slider__subtitle">
-                Full Stack javascript developer
+              {t('full')}
               </div>
             </div>
             <div className="social__wrapper">
@@ -94,11 +97,10 @@ export const About: FC<IProps> = (props) => {
           <div className="slider__right">
             <div>
               <div className="slider__title">
-                i started learning Web development <br />  in 2019 year
-
+                {t('slid2Top1')} <br /> {t('slid2Top2')}
               </div>
               <div className="slider__subtitle">
-                and now i spend all my free time with writing code
+               {t('slide2bottom')}
               </div>
             </div>
           </div>
@@ -108,7 +110,7 @@ export const About: FC<IProps> = (props) => {
           { display: 'flex' }
           : { display: 'none' }} className="slider__item slider__item-3">
           <div className='slider__item-3-title'>
-            javascript is the  best language <br /> from programing languages
+            {t("slide3top")} <br /> {t('slide3bottom')}
             <br />
             <AiOutlineHeart fontVariant="red" className="slider-heard" />
           </div>

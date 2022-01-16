@@ -109,8 +109,9 @@
   }
 }
 .slider__left-image{
+  border-radius:10px;
   transform: translateX(-50%);
-  border-radius: 50%;
+  cursor: zoom-in;
 }
 .about{
     img {
